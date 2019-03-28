@@ -1,0 +1,322 @@
+html {
+  font-size: 30px;
+}
+
+* {
+  font-family:"Raleway", sans-serif;
+  box-sizing: border-box;/*adding border and padding values to the content*/
+/* deleting padding and margin default values from elements */
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  max-width: 920px;
+  margin : 0 auto;/*horizantally aligning the page in the middle on screens > 920px*/  
+  background :#E6EBE0;
+}
+
+.row {
+  border: 3px solid #1D3557;
+  border-radius : 5px;
+  margin : 10px 0;
+  padding:5px;
+  display: flex;
+  flex-flow: row wrap;
+  height: auto;
+}
+
+.column {
+  border: 5px solid red;
+  /* padding: 5px; */
+}
+
+/* top-header  */
+.top-header-wrapper{
+justify-content : space-between;
+}
+
+.top-header__logo{
+  max-height: 150px;
+  overflow:hidden;
+}
+
+.top-header__logo img{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+
+.top-header__contact{
+  font-size: 20px;
+  align-self: center;
+  padding-left: 25px;/*horizantal alignment from the logo*/
+}
+
+/* Hide the hamburger-menu icon that should open and close the top-navigation-bar on small screens */
+.top-header__hamburger-icon{
+  display: none;
+}
+
+/* top navigation bar */
+.top-navigation-bar {
+  justify-content: center;
+  background-color:#FFA69E;
+}
+.top-navigation-bar ul {
+  padding:0; /*deleting the values coming from .row class*/
+}
+
+.nav-item {
+  width: 20%;
+  min-width: 115px;
+  text-align: center;
+  list-style-type: none;/*deleting default bullets from 'li' element*/
+  height:40px;/*vertical alignment of text in 'li'*/
+  line-height:40px;/*vertical alignment of text in 'li'*/
+  font-size: 20px;
+  border-right: 1px solid #1D3557;
+}
+.nav-item:last-child {
+  border-right: none;
+}
+/*hover effect on menu items on both top and footer navigation bars*/
+.nav-item:hover {
+  background-color:#FF686B;
+  color :#F4F1BB;
+}
+/*hover effect for only menu items on top navigation bar by increasing font-size with transition*/
+.top.nav-item:hover {
+  font-size:26px;
+  transition: font-size .3s;
+}
+
+li a {
+  color :#003459;
+  text-decoration: none;/*delete the default underline on anchor element*/
+}
+
+/* When the screen is less than 600 pixels wide, hide top-navigation-bar, 
+show hamburger-menu icon*/
+@media screen and (max-width: 600px) {
+  .top-navigation-bar {
+    display: none;
+  }
+
+  .top-header__hamburger-icon{
+  display: block;
+  padding-right: 15px;
+  display:flex;
+  justify-content:flex-end;
+  align-items: center;
+  }
+
+/*hover effect on hamburger-menu icon*/
+  .fa-bars:hover{
+  background-color:#FFA69E;
+  padding: 5px 8px;
+  border-radius:5px; 
+  }
+/*when clicking the hamburger-menu icon show top-navigation-bar as dropdown menu*/
+  .top-navigation-bar.dropdown {
+  display:block;
+  }
+
+  .top.nav-item {
+  border-right: none;
+}
+  .top.nav-item {
+  border-bottom: 1px solid #1D3557;
+}
+  .top.nav-item:last-child {
+  border-bottom: none;
+}
+
+}
+/*'main-content' covering 'greeting' and 'carousel picture' section*/
+.main-box{
+  max-height : 550px;
+  border: 5px solid rgba(0, 0, 0, 0);/*create a gap between two section using opacity of the color*/
+}
+/* deleteing margin value coming from 'row' class*/
+.main-content__greeting-wrapper{
+  margin:0;
+}
+
+.greeting-box{
+  max-height : 250px;
+  border: 2px solid #457B9D;
+  border-radius:5px;
+  padding: 15px;
+  font-size: 18px;
+}
+
+h1, h2{
+  font-family: 'Courgette', cursive;
+  font-size:28px;
+}
+
+.greeting{
+  background-color: #9CAFB7;
+}
+
+/* carousel main picture */
+.carousel-picture-container{
+  max-height: 400px;
+  width:100%;
+  overflow:hidden;
+  border : 5px solid rgba(0, 0, 0, 0);/*create a gap around the picture using opacity of the color*/
+}
+/*fitting image inside the container*/
+.carousel-picture-container img {
+  width:100%;
+  display:block;
+  height:auto;
+  border:1px solid white;
+  border-radius:4px;
+}
+/* carousel area thumbnails */
+.carousel-thumbnails-wrapper{
+  max-height:150px;
+  overflow:hidden;
+  margin : 0;/*deleting value coming from 'row' class*/
+  padding: 0;/*deleting value coming from 'row' class*/
+  border : 5px solid rgba(0, 0, 0, 0);
+}
+
+.carousel-thumbnail-container{
+  border: 2px solid white;
+  width: 25%;
+  max-height: 100px;
+  overflow:hidden;
+}
+
+.carousel-thumbnail-container img {
+  width:100%;
+  display:block;
+  height:auto;
+}
+
+/*cake catalogue*/
+.cake-catalogue-wrapper {
+  justify-content: center;
+  overflow: hidden;
+  padding :10px;
+}
+
+.cake-box {
+  max-height: 400px;
+  border: 2px solid white;
+}
+
+.cake-picture-container {
+  border: 2px solid #457B9D;
+  border-bottom:none;
+  border-radius:5px;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.cake-picture-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cake-description {
+  border: 2px solid #457B9D;
+  border-radius: 5px;
+  padding: 10px;
+  align-self: center;
+  text-align: center;
+  font-size: 22px;
+}
+
+/* position cake-description next to cake picture on mobile devices*/
+@media screen and (max-width: 600px) {
+  .cake-box {
+    display: flex;
+    flex-direction: row;
+  }
+/*decreasing font-size on cake-description*/
+  .cake-description{
+    font-size:18px;
+    height:100%;
+    /*vertical alignment of text*/
+    display:flex;
+    align-items:center;
+  }
+}
+
+/* footer navigation-bar */
+.footer-navigation-bar ul{
+  justify-content: center;
+  background-color:#FFA69E;
+  padding:0; /*deleting value coming from 'row' class*/
+}
+
+/*utility classes*/
+/*mobile devices screen size < 600px */
+@media screen and (max-width: 600px) {
+  .mobile-12-col {
+    width: 100%;
+    /* background: orange; */
+  }
+  .mobile-8-col {
+    width: 67%;
+    /* background: orange; */
+  }
+  .mobile-6-col {
+    width: 50%;
+    /* background: orange; */
+  }
+  .mobile-4-col {
+    width: 33%;
+    /* background: orange; */
+  }
+  .mobile-3-col {
+    width: 25%;
+    /* background: orange; */
+  }
+}
+/*tablet, screen size > 600px and < 800px */
+@media screen and (min-width: 600px) {
+  .tablet-3-col {
+    width: 25%;
+    /* background: yellow; */
+  }
+
+  .tablet-4-col {
+    width: 33%;
+    /* background: yellow; */
+  }
+  .tablet-6-col {
+    width: 50%;
+    /* background: yellow; */
+  }
+  .tablet-12-col {
+    width: 100%;
+    /* background: yellow; */
+  }
+}
+/*desktop and other screens > 800px*/
+@media screen and (min-width: 800px) {
+  .desktop-3-col {
+    width: 25%;
+  }
+
+  .desktop-4-col {
+    width: 33%;
+  }
+  .desktop-6-col {
+    width: 50%;
+  }
+  .desktop-8-col {
+    width: 67%;
+  }
+
+  .desktop-12-col {
+    width: 100%;
+  }
+}
