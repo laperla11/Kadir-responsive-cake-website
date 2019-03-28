@@ -59,7 +59,8 @@
             <!--  main-content__carousel section  -->
             <section class='main-content__carousel-wrapper main-box desktop-8-col tablet-12-col mobile-12-col'>
                 <figure class='carousel-picture-container'>
-                    <img src="images/blur-cake-close-up-162827.jpg" alt="carousel-image artistic-cake" />
+                    <img id='carousel-picture' src="images/blur-cake-close-up-162827.jpg"
+                        alt="carousel-image artistic-cake" />
                 </figure>
                 <!--  carousel section thumbnails      -->
                 <section class='carousel-thumbnails-wrapper row'>
@@ -117,16 +118,7 @@
             </ul>
     </footer>
 
-    <script>
-        var iconEl = document.getElementById('hamburger-button');
-        iconEl.addEventListener('click', () => {
-            topNavEl = document.getElementById('top-nav');
-            if (topNavEl.className === 'top-navigation-bar') {
-                topNavEl.className += ' dropdown'
-            } else {
-                topNavEl.className = 'top-navigation-bar'
-            }
-        });
+    <script src='main.js'>
     </script>
 </body>
 
