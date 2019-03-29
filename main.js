@@ -23,35 +23,40 @@ onclickThumbnailBtn.addEventListener('click', (event) => {
 //changing carousel picture with the 'previuos' and 'next' buttons
 //find the click buttons
 const carouselButtons = document.querySelectorAll('.carousel-button');
+//adding event listeners to both buttons
 carouselButtons.forEach(button => {
-    button.addEventListener('click', changePicture);
+    button.addEventListener('click', changeImage);
 })
 
-function changePicture(event) {
-    allThumbnails = document.querySelectorAll('.thumbnail');
+function changeImage(event) {
+    thumbnails = document.querySelectorAll('.thumbnail');
     clickedButton = event.target.innerText;
     currentCarouselSrc = carouselImage.src;
-    if (clickedButton === '❮') {
-        allThumbnails.forEach((thumbnail, i) => {
-            if (currentCarouselSrc === thumbnail.src) {
-                if (i === 0) {
-                    previousImage = allThumbnails[allThumbnails.length - 1].src;
-                } else {
-                    previousImage = allThumbnails[i - 1].src;
-                }
+    thumbnails.forEach((thumbnail, i) => {
+        if (currentCarouselSrc === thumbnail.src) {
+            if (clickedButton === '❮') {
+                getPreviousImage(i);
+            } else {
+                getNextImage(i)
             }
-        })
-        carouselImage.src = previousImage;
-    } else {
-        allThumbnails.forEach((thumbnail, i) => {
-            if (currentCarouselSrc === thumbnail.src) {
-                if (i === allThumbnails.length - 1) {
-                    nextImage = allThumbnails[0].src;
-                } else {
-                    nextImage = allThumbnails[i + 1].src;
-                }
-            }
-        })
-        carouselImage.src = nextImage;
-    }
+        }
+    });
 }
+function getPreviousImage(index) {
+    if (index === 0) {
+        previousImage = thumbnails[thumbnails.length - 1].src;
+    } else {
+        previousImage = thumbnails[index - 1].src;
+    }
+    return carouselImage.src = previousImage;
+}
+
+function getNextImage(index) {
+    if (index === thumbnails.length - 1) {
+        nextImage = thumbnails[0].src;
+    } else {
+        nextImage = thumbnails[index + 1].src;
+    }
+    return carouselImage.src = nextImage;
+}
+
