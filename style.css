@@ -161,13 +161,41 @@ h1, h2{
   background-color: #9CAFB7;
 }
 
+.prev{
+  align-self:center;
+}
+.next{
+  align-self:center;
+}
+
 /* carousel main picture */
 .carousel-picture-container{
   max-height: 400px;
   width:100%;
   overflow:hidden;
   border : 5px solid rgba(0, 0, 0, 0);/*create a gap around the picture using opacity of the color*/
+  position:relative;/*to position arrow buttons over the picture*/
 }
+/*positioning arrow-buttons inside the parent('carousel-picture-container')*/
+.carousel-button{
+  position : absolute;
+  top:45%;
+  padding-bottom:5px;
+  color: #003459;
+  background-color:#FFA69E;
+  opacity:.3;
+}
+
+.carousel-button:hover{
+  opacity:1;
+}
+.prev{
+  left:5%; 
+}
+.next{
+  right:5%; 
+}
+
 /*fitting image inside the container*/
 .carousel-picture-container img {
   width:100%;
