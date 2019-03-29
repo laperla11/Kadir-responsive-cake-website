@@ -75,7 +75,7 @@ justify-content : space-between;
   list-style-type: none;/*deleting default bullets from 'li' element*/
   height:40px;/*vertical alignment of text in 'li'*/
   line-height:40px;/*vertical alignment of text in 'li'*/
-  font-size: 20px;
+  font-size: 19px;
   border-right: 1px solid #1D3557;
 }
 .nav-item:last-child {
@@ -88,7 +88,7 @@ justify-content : space-between;
 }
 /*hover effect for only menu items on top navigation bar by increasing font-size with transition*/
 .top.nav-item:hover {
-  font-size:26px;
+  font-size:22px;
   transition: font-size .3s;
 }
 
@@ -135,13 +135,11 @@ show hamburger-menu icon*/
 
 }
 /*'main-content' covering 'greeting' and 'carousel picture' section*/
-.main-box{
-  max-height : 550px;
-  border: 5px solid rgba(0, 0, 0, 0);/*create a gap between two section using opacity of the color*/
-}
-/* deleteing margin value coming from 'row' class*/
+/*greeting section*/
 .main-content__greeting-wrapper{
-  margin:0;
+  margin:0;/* deleteing margin value coming from 'row' class*/
+  max-height : 700px;
+  border: 5px solid rgba(0, 0, 0, 0);/*create a gap between two section using opacity of the color*/
 }
 
 .greeting-box{
@@ -149,7 +147,12 @@ show hamburger-menu icon*/
   border: 2px solid #457B9D;
   border-radius:5px;
   padding: 10px;
-  font-size: 18px;
+  font-size: 17px;
+}
+/*prevent text overflowing from the container in this range */
+@media screen and (min-width: 800px) and (max-width: 900px) {
+  .greeting-box{
+  font-size: 15px;}
 }
 
 h1, h2{
@@ -160,17 +163,14 @@ h1, h2{
 .greeting{
   background-color: #9CAFB7;
 }
-
-.prev{
-  align-self:center;
-}
-.next{
-  align-self:center;
-}
-
 /* carousel main picture */
+.main-content__carousel-wrapper{
+  max-height : 700px;
+  border: 5px solid rgba(0, 0, 0, 0);/*create a gap between two section using opacity of the color*/
+}
+
 .carousel-picture-container{
-  max-height: 400px;
+  max-height: 500px;
   width:100%;
   overflow:hidden;
   border : 5px solid rgba(0, 0, 0, 0);/*create a gap around the picture using opacity of the color*/
@@ -181,13 +181,12 @@ h1, h2{
   position : absolute;
   top:45%;
   padding-bottom:5px;
-  color: #003459;
+  color: lightcyan;
   background-color:#FFA69E;
-  opacity:.3;
 }
 
 .carousel-button:hover{
-  opacity:1;
+  background-color:#FF686B;
 }
 .prev{
   left:5%; 
@@ -206,7 +205,7 @@ h1, h2{
 }
 /* carousel area thumbnails */
 .carousel-thumbnails-wrapper{
-  max-height:150px;
+  max-height:200px;
   overflow:hidden;
   margin : 0;/*deleting value coming from 'row' class*/
   padding: 0;/*deleting value coming from 'row' class*/
@@ -216,7 +215,7 @@ h1, h2{
 .carousel-thumbnail-container{
   border: 2px solid white;
   width: 25%;
-  max-height: 100px;
+  max-height: 200px;
   overflow:hidden;
 }
 
@@ -272,6 +271,7 @@ h1, h2{
   .cake-description{
     font-size:18px;
     height:100%;
+    border-left:none;
     /*vertical alignment of text*/
     display:flex;
     align-items:center;
