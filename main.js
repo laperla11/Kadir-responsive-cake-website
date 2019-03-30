@@ -28,8 +28,8 @@ carouselButtons.forEach(button => {
     button.addEventListener('click', changeImage);
 })
 
+const thumbnails = document.querySelectorAll('.thumbnail');
 function changeImage(event) {
-    thumbnails = document.querySelectorAll('.thumbnail');
     clickedButton = event.target.innerText;
     currentCarouselSrc = carouselImage.src;
     thumbnails.forEach((thumbnail, i) => {
@@ -59,4 +59,39 @@ function getNextImage(index) {
     }
     return carouselImage.src = nextImage;
 }
-
+//adding touch events for mobile devices
+carouselImage.addEventListener('touchstart', dragStart);
+carouselImage.addEventListener('touchend', dragEnd);
+carouselImage.addEventListener('touchmove', dragAction);
+//event listeners
+//finding initial X position
+var posXInitial;
+function dragStart(e) {
+    e.preventDefault();
+    posXInitial = e.touches[0].clientX;
+}
+//monitoring the drag move
+function dragAction(e) {
+    var touch = e.touches[0];
+    var changes = posXInitial - touch.clientX;
+    if (changes < 0) {
+        return;
+    }
+}
+//implementing bslide action
+function dragEnd(e) {
+    var change = posXInitial - e.changedTouches[0].clientX;
+    var threshold = screen.width / 4;
+    currentCarouselSrc = carouselImage.src;
+    thumbnails.forEach((thumbnail, i) => {
+        if (currentCarouselSrc === thumbnail.src) {
+            if (change < -threshold) {
+                getPreviousImage(i);
+            } else if (change > threshold) {
+                getNextImage(i);
+            } else {
+                return;
+            }
+        }
+    });
+}
