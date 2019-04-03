@@ -1,57 +1,41 @@
-html {
-  font-size: 30px;
-}
-
-* {
-  font-family:"Raleway", sans-serif;
-  box-sizing: border-box;/*adding border and padding values to the content*/
-/* deleting padding and margin default values from elements */
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  max-width: 920px;
-  margin : 0 auto;/*horizantally aligning the page in the middle on screens > 920px*/  
-  background :#E6EBE0;
-  padding:10px;
+  background-color : #E6EBE0;
+  font-family:"Raleway", sans-serif;
 }
 
+main, footer, header, section, article, aside, nav, ul, li , a, figure, div, p, h1, h2, h3 {
+  padding:0;
+  margin:0;
+}
 .row {
   border: 3px solid #1D3557;
   border-radius : 5px;
-  margin : 10px 0;
-  padding:5px;
-  display: flex;
-  flex-flow: row wrap;
-  height: auto;
-}
-
-.column {
-  border: 5px solid red;
-  /* padding: 5px; */
+  margin : 15px -15px;
 }
 
 /* top-header  */
 .top-header-wrapper{
 justify-content : space-between;
+min-height: 80px;
 }
 
 .top-header__logo{
   max-height: 150px;
   overflow:hidden;
+  align-self: center;
 }
 
 .top-header__logo img{
   max-width:100%;
   height:auto;
   display:block;
+  align-self: center;
 }
 
 .top-header__contact{
   font-size: 20px;
   align-self: center;
-  padding-left: 25px;/*horizantal alignment from the logo*/
+  padding-left: 65px;/*horizantal alignment from the logo*/
 }
 
 /* Hide the hamburger-menu icon that should open and close the top-navigation-bar on small screens */
@@ -59,17 +43,22 @@ justify-content : space-between;
   display: none;
 }
 
+.fa.fa-bars {
+  font-size:35px;
+}
 /* top navigation bar */
 .top-navigation-bar {
   justify-content: center;
   background-color:#FFA69E;
 }
 .top-navigation-bar ul {
+  display:flex;
   padding:0; /*deleting the values coming from .row class*/
+  background-color:#FFA69E;
 }
 
 .nav-item {
-  width: 20%;
+  width:20%;
   min-width: 110px;
   text-align: center;
   list-style-type: none;/*deleting default bullets from 'li' element*/
@@ -97,11 +86,17 @@ li a {
   text-decoration: none;/*delete the default underline on anchor element*/
 }
 
-/* When the screen is less than 600 pixels wide, hide top-navigation-bar, 
+/* When the screen is less than 768 pixels wide, hide top-navigation-bar, 
 show hamburger-menu icon*/
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
   .top-navigation-bar {
     display: none;
+  }
+  .top-header-wrapper{
+    margin-bottom:0;
+  }
+  .top-navigation-bar ul{
+    margin-top:0;
   }
 
   .top-header__hamburger-icon{
@@ -124,9 +119,8 @@ show hamburger-menu icon*/
   }
 
   .top.nav-item {
+  width:100%;
   border-right: none;
-}
-  .top.nav-item {
   border-bottom: 1px solid #1D3557;
 }
   .top.nav-item:last-child {
@@ -140,19 +134,27 @@ show hamburger-menu icon*/
   margin:0;/* deleteing margin value coming from 'row' class*/
   max-height : 700px;
   border: 5px solid rgba(0, 0, 0, 0);/*create a gap between two section using opacity of the color*/
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+@media (min-width: 992px){
+  .main-content__greeting-wrapper{
+    padding-right: 0px;
+  }
 }
 
 .greeting-box{
-  max-height : 250px;
+  max-height : 300px;
   border: 2px solid #457B9D;
   border-radius:5px;
   padding: 10px;
-  font-size: 17px;
+  font-size: 18px;
 }
-/*prevent text overflowing from the container in this range */
-@media screen and (min-width: 800px) and (max-width: 900px) {
+
+@media screen and (min-width: 1200px) {
   .greeting-box{
-  font-size: 15px;}
+  font-size: 23px;
+}
 }
 
 h1, h2{
@@ -166,15 +168,22 @@ h1, h2{
 /* carousel main picture */
 .main-content__carousel-wrapper{
   max-height : 700px;
-  border: 5px solid rgba(0, 0, 0, 0);/*create a gap between two section using opacity of the color*/
+}
+@media (min-width: 992px){
+.main-content__carousel-wrapper{
+padding-top: 10px;
+padding-bottom: 10px;
+}
 }
 
 .carousel-picture-container{
   max-height: 500px;
   width:100%;
+  border-radius: 5px; 
   overflow:hidden;
-  border : 5px solid rgba(0, 0, 0, 0);/*create a gap around the picture using opacity of the color*/
   position:relative;/*to position arrow buttons over the picture*/
+  padding-left: 5px;
+  padding-right: 5px;
 }
 /*positioning arrow-buttons inside the parent('carousel-picture-container')*/
 .carousel-button{
@@ -183,6 +192,7 @@ h1, h2{
   padding-bottom:5px;
   color: lightcyan;
   background-color:#FFA69E;
+  font-size:30px;
 }
 
 .carousel-button:hover{
@@ -217,6 +227,8 @@ h1, h2{
   width: 25%;
   max-height: 200px;
   overflow:hidden;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .carousel-thumbnail-container img {
@@ -234,16 +246,19 @@ h1, h2{
 
 .cake-box {
   max-height: 400px;
-  border: 2px solid white;
+  border: 2px solid rgba(0, 0, 0, 0);
+  padding-left:10px;
+  padding-right:10px;
+
 }
 
 .cake-picture-container {
   border: 2px solid #457B9D;
   border-bottom:none;
   border-radius:5px;
-  width: 100%;
-  height: auto;
+  max-height: 250px;
   overflow: hidden;
+  padding : 0;
 }
 
 .cake-picture-container img {
@@ -258,23 +273,23 @@ h1, h2{
   padding: 10px;
   align-self: center;
   text-align: center;
-  font-size: 22px;
+  font-size: 18px;
+  min-height: 65px;
+  display:flex; 
 }
 
 /* position cake-description next to cake picture on mobile devices*/
-@media screen and (max-width: 600px) {
-  .cake-box {
+@media screen and (max-width: 576px) {
+.cake-box {
     display: flex;
     flex-direction: row;
-  }
-/*decreasing font-size on cake-description*/
+  } 
   .cake-description{
-    font-size:18px;
-    height:100%;
+    height:100%; 
     border-left:none;
     /*vertical alignment of text*/
     display:flex;
-    align-items:center;
+    align-items:center; 
   }
 }
 
@@ -285,67 +300,3 @@ h1, h2{
   padding:0; /*deleting value coming from 'row' class*/
 }
 
-/*utility classes*/
-/*mobile devices screen size < 600px */
-@media screen and (max-width: 600px) {
-  .mobile-12-col {
-    width: 100%;
-    /* background: orange; */
-  }
-  .mobile-8-col {
-    width: 67%;
-    /* background: orange; */
-  }
-  .mobile-6-col {
-    width: 50%;
-    /* background: orange; */
-  }
-  .mobile-4-col {
-    width: 33%;
-    /* background: orange; */
-  }
-  .mobile-3-col {
-    width: 25%;
-    /* background: orange; */
-  }
-}
-/*tablet, screen size > 600px and < 800px */
-@media screen and (min-width: 600px) {
-  .tablet-3-col {
-    width: 25%;
-    /* background: yellow; */
-  }
-
-  .tablet-4-col {
-    width: 33%;
-    /* background: yellow; */
-  }
-  .tablet-6-col {
-    width: 50%;
-    /* background: yellow; */
-  }
-  .tablet-12-col {
-    width: 100%;
-    /* background: yellow; */
-  }
-}
-/*desktop and other screens > 800px*/
-@media screen and (min-width: 800px) {
-  .desktop-3-col {
-    width: 25%;
-  }
-
-  .desktop-4-col {
-    width: 33%;
-  }
-  .desktop-6-col {
-    width: 50%;
-  }
-  .desktop-8-col {
-    width: 67%;
-  }
-
-  .desktop-12-col {
-    width: 100%;
-  }
-}

@@ -11,19 +11,21 @@ iconEl.addEventListener('click', () => {
 
 //changing carousel picture with clicking the thumbnails under the picture
 //access carousel image element
-const carouselImage = document.getElementById('carousel-image');
+var carouselImage = document.getElementById('carousel-image');
 //access the onclick thumbnails area
-const onclickThumbnailBtn = document.querySelector('.carousel-thumbnails-wrapper');
-//access all thumbnails
 const thumbnails = document.querySelectorAll('.thumbnail');
-//adding event listener thumbnail wrapaer
+
+const onclickThumbnailBtn = document.querySelector('.carousel-thumbnails-wrapper');
+//adding event listener
 onclickThumbnailBtn.addEventListener('click', (event) => {
+    //delete the previous border
     thumbnails.forEach(thumbnail => {
-        thumbnail.style.border = '2px solid white';
-    })
+        // console.log(thumbnail)
+        thumbnail.style.border = '3px solid white';
+    });
     //assigning carousel picture to the onclicked thumbnail
     carouselImage.src = event.target.src;
-    event.target.style.border = '3px solid #FF686B';
+    event.target.style.border = '3px solid #FFA69E'
 })
 
 //changing carousel picture with the 'previuos' and 'next' buttons
@@ -39,31 +41,34 @@ function changeImage(event) {
     clickedButton = event.target.innerText;
     currentCarouselSrc = carouselImage.src;
     thumbnails.forEach((thumbnail, i) => {
+        thumbnail.style.border = '3px solid white';
         if (currentCarouselSrc === thumbnail.src) {
             if (clickedButton === '❮') {
-                getPreviousImage(i);
+                changedCarousel = getPreviousImage(i);
             } else {
-                getNextImage(i)
+                changedCarousel = getNextImage(i);
             }
         }
     });
+    changedCarousel.style.border = '3px solid #FFA69E';
+    carouselImage.src = changedCarousel.src;
 }
 function getPreviousImage(index) {
     if (index === 0) {
-        previousImage = thumbnails[thumbnails.length - 1].src;
+        previousImage = thumbnails[thumbnails.length - 1];
     } else {
-        previousImage = thumbnails[index - 1].src;
+        previousImage = thumbnails[index - 1];
     }
-    return carouselImage.src = previousImage;
+    return previousImage;
 }
 
 function getNextImage(index) {
     if (index === thumbnails.length - 1) {
-        nextImage = thumbnails[0].src;
+        nextImage = thumbnails[0];
     } else {
-        nextImage = thumbnails[index + 1].src;
+        nextImage = thumbnails[index + 1];
     }
-    return carouselImage.src = nextImage;
+    return nextImage;
 }
 //adding touch events for mobile devices
 carouselImage.addEventListener('touchstart', dragStart);
@@ -75,6 +80,7 @@ var posXInitial;
 function dragStart(e) {
     e.preventDefault();
     posXInitial = e.touches[0].clientX;
+    console.log(posXInitial)
 }
 //monitoring the drag move
 function dragAction(e) {
@@ -83,6 +89,7 @@ function dragAction(e) {
     if (changes < 0) {
         return;
     }
+    console.log(touch, changes)
 }
 //implementing bslide action
 function dragEnd(e) {
