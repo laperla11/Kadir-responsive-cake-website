@@ -5,7 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <link rel="stylesheet" type="text/css" href="styles/grid.css" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
     <!-- google-fonts -->
     <link href="https://fonts.googleapis.com/css?family=Courgette|Dosis|Raleway&amp;subset=latin-ext" rel="stylesheet">
     <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
@@ -14,115 +15,117 @@
 </head>
 
 <body>
-    <header>
-        <div class="top-header-wrapper row">
-            <figure class="top-header__logo desktop-3-col tablet-4-col mobile-4-col">
-                <img src="images/company-logo.png" alt="company-logo" />
-            </figure>
-            <div class="top-header__contact desktop-3-col tablet-3-col mobile-4-col">CONTACT</div>
-            <div class='top-header__hamburger-icon mobile-4-col'>
-                <!-- hamburger menu icon for mobile devices -->
-                <i id='hamburger-button' class="fa fa-bars"></i>
-            </div>
-        </div>
-        <nav id='top-nav' class="top-navigation-bar">
-            <ul class='row'>
-                <li class="top nav-item mobile-12-col"><a href="#">HOME</a></li>
-                <li class="top nav-item mobile-12-col"><a href="#">CAKES</a></li>
-                <li class="top nav-item mobile-12-col"><a href="#">ORDERING</a></li>
-                <li class="top nav-item mobile-12-col"><a href="#">LESSONS</a></li>
-                <li class="top nav-item mobile-12-col"><a href="#">ABOUT</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class='main-content row'>
-            <!--    main-content__greeting part   -->
-            <article class='main-content__greeting-wrapper row desktop-4-col tablet-12-col mobile-12-col'>
-                <div class="mobile-12-col tablet-6-col desktop-12-col greeting-box greeting">
-                    <h1>About us</h1>
-                    <p>We pride ourselves in using the finest quality ingredients, and taking the upmost care in the
-                        production of our cakes.
-                        Our commitment to quality and value means that you will receive a fantastic, delicious
-                        product,
-                        every time.
-                </div>
-                <div class="mobile-12-col tablet-6-col desktop-12-col greeting-box info">
-                    <h2>The freshest cake in town</h2>
-                    <p>It is a great honour for us to share our customers’ most important occasions, and we pride
-                        ourselves in delivering first-rate customer service as well as delicious and beautiful
-                        cakes.
-                    </p>
-                </div>
-            </article>
-            <!--  main-content__carousel section  -->
-            <section class='main-content__carousel-wrapper desktop-8-col tablet-12-col mobile-12-col'>
-                <figure class='carousel-picture-container'>
-                    <div>
-                        <a class="prev carousel-button">&#10094;</a>
-                        <a class="next carousel-button">&#10095;</a>
-                    </div>
-
-                    <img id='carousel-image' src="images/blur-cake-close-up-162827.jpg"
-                        alt="carousel-image blur-cake" />
+    <div class="container">
+        <header>
+            <div class="top-header-wrapper row">
+                <figure class="top-header__logo xs-col-4 sm-col-4 md-col-3">
+                    <img src="images/company-logo.png" alt="company-logo" />
                 </figure>
-                <!--  carousel section thumbnails      -->
-                <section class='carousel-thumbnails-wrapper row'>
-                    <figure class='carousel-thumbnail-container'>
-                        <img class='thumbnail' src="images/blur-cake-close-up-162827.jpg" alt="cake-img4" />
+                <div class="top-header__contact xs-col-4 sm-col-4 md-col-3">CONTACT</div>
+                <div class='top-header__hamburger-icon xs-col-4'>
+                    <!-- hamburger menu icon for mobile devices -->
+                    <i id='hamburger-button' class="fa fa-bars"></i>
+                </div>
+            </div>
+            <nav id='top-nav' class="top-navigation-bar">
+                <ul class='row'>
+                    <li class="top nav-item"><a href="#">HOME</a></li>
+                    <li class="top nav-item"><a href="#">CAKES</a></li>
+                    <li class="top nav-item"><a href="#">ORDERING</a></li>
+                    <li class="top nav-item"><a href="#">LESSONS</a></li>
+                    <li class="top nav-item"><a href="#">ABOUT</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class='main-content row'>
+                <!--    main-content__greeting part   -->
+                <article class='main-content__greeting-wrapper row xs-12-col lg-col-4'>
+                    <div class="xs-col-12 sm-col-6 lg-col-12 greeting-box greeting">
+                        <h1>About us</h1>
+                        <p>We pride ourselves in using the finest quality ingredients, and taking the upmost care in the
+                            production of our cakes.
+                            Our commitment to quality and value means that you will receive a fantastic, delicious
+                            product,
+                            every time.
+                    </div>
+                    <div class="xs-col-12 sm-col-6 lg-col-12 greeting-box info">
+                        <h2>The freshest cake in town</h2>
+                        <p>It is a great honour for us to share our customers’ most important occasions, and we pride
+                            ourselves in delivering first-rate customer service as well as delicious and beautiful
+                            cakes.
+                        </p>
+                    </div>
+                </article>
+                <!--  main-content__carousel section  -->
+                <section class='main-content__carousel-wrapper xs-col-12 lg-col-8'>
+                    <figure class='carousel-picture-container'>
+                        <div>
+                            <a class="prev carousel-button">&#10094;</a>
+                            <a class="next carousel-button">&#10095;</a>
+                        </div>
+
+                        <img id='carousel-image' src="images/blur-cake-close-up-162827.jpg"
+                            alt="carousel-image blur-cake" />
                     </figure>
-                    <figure class='carousel-thumbnail-container'>
-                        <img class='thumbnail' src="images/chocolate-cake.jpg" alt="chocolate-cake thumbnail " />
-                    </figure>
-                    <figure class='carousel-thumbnail-container'>
-                        <img class='thumbnail' src="images/art-artistic-breakfast-207214.jpg" alt="cake-img2" />
-                    </figure>
-                    <figure class='carousel-thumbnail-container'>
-                        <img class='thumbnail' src="images/bake-baked-bakery-1028714.jpg" alt="cake-img1" />
-                    </figure>
+                    <!--  carousel section thumbnails      -->
+                    <section class='carousel-thumbnails-wrapper row'>
+                        <figure class='carousel-thumbnail-container xs-col-3'>
+                            <img class='thumbnail' src="images/blur-cake-close-up-162827.jpg" alt="cake-img4" />
+                        </figure>
+                        <figure class='carousel-thumbnail-container xs-col-3'>
+                            <img class='thumbnail' src="images/chocolate-cake.jpg" alt="chocolate-cake thumbnail " />
+                        </figure>
+                        <figure class='carousel-thumbnail-container xs-col-3'>
+                            <img class='thumbnail' src="images/art-artistic-breakfast-207214.jpg" alt="cake-img2" />
+                        </figure>
+                        <figure class='carousel-thumbnail-container xs-col-3'>
+                            <img class='thumbnail' src="images/bake-baked-bakery-1028714.jpg" alt="cake-img1" />
+                        </figure>
+                    </section>
                 </section>
             </section>
-        </section>
-        <!-- cake catologue section -->
-        <section class='cake-catalogue-wrapper row'>
-            <div class='cake-box desktop-3-col tablet-6-col mobile-12-col'>
-                <figure class='cake-picture-container mobile-8-col'>
-                    <img src="images/berries-blur-cake-461192.jpg" alt="Summer Berry Cake picture" />
-                </figure>
-                <p class='cake-description mobile-4-col'>Summer Berry Cake</p>
-            </div>
-            <div class='cake-box desktop-3-col tablet-6-col mobile-12-col'>
-                <figure class='cake-picture-container mobile-8-col'>
-                    <img src="images/birthday-birthday-cake-cake-140831.jpg" alt="White Sour Cream Cake picture" />
-                </figure>
-                <p class='cake-description mobile-4-col'>White Sour Cream Cake</p>
-            </div>
-            <div class='cake-box desktop-3-col tablet-6-col mobile-12-col'>
-                <figure class='cake-picture-container mobile-8-col'>
-                    <img src="images/anniversary-beautiful-birthday-433527.jpg" alt="Pink Rose Birtday Cake picture" />
-                </figure>
-                <p class='cake-description mobile-4-col'>Pink Rose Birtday Cake</p>
-            </div>
-            <div class='cake-box desktop-3-col tablet-6-col mobile-12-col'>
-                <figure class='cake-picture-container mobile-8-col'>
-                    <img src="images/baking-blueberries-blur-227432.jpg" alt="Double Chocolate Cake picture" />
-                </figure>
-                <p class='cake-description mobile-4-col'>Double Chocolate Cake</p>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <nav class="footer-navigation-bar">
-            <ul class='row'>
-                <li class="nav-item"><a href="#">SITE MAP</a></li>
-                <li class="nav-item"><a href="#">CONTACT</a></li>
-                <li class="nav-item"><a href="#">DELIVERY</a></li>
-                <!-- <li class="nav-item non-display"><a href="#">XXXXX</a></li>
+            <!-- cake catologue section -->
+            <section class='cake-catalogue-wrapper row'>
+                <div class='cake-box xs-col-12 sm-col-6 md-col-6 lg-col-3'>
+                    <figure class='cake-picture-container xs-col-7 sm-col-12'>
+                        <img src="images/berries-blur-cake-461192.jpg" alt="Summer Berry Cake picture" />
+                    </figure>
+                    <p class='cake-description xs-col-5 sm-col-12'>Summer Berry Cake</p>
+                </div>
+                <div class='cake-box xs-col-12 sm-col-6 md-col-6 lg-col-3'>
+                    <figure class='cake-picture-container xs-col-7 sm-col-12'>
+                        <img src="images/birthday-birthday-cake-cake-140831.jpg" alt="White Sour Cream Cake picture" />
+                    </figure>
+                    <p class='cake-description xs-col-5 sm-col-12'>White Sour Cream Cake</p>
+                </div>
+                <div class='cake-box xs-col-12 sm-col-6 md-col-6 lg-col-3'>
+                    <figure class='cake-picture-container xs-col-7 sm-col-12'>
+                        <img src="images/anniversary-beautiful-birthday-433527.jpg"
+                            alt="Pink Rose Birtday Cake picture" />
+                    </figure>
+                    <p class='cake-description xs-col-5 sm-col-12'>Pink Rose Birtday Cake</p>
+                </div>
+                <div class='cake-box xs-col-12 sm-col-6 md-col-6 lg-col-3'>
+                    <figure class='cake-picture-container xs-col-7 sm-col-12'>
+                        <img src="images/baking-blueberries-blur-227432.jpg" alt="Double Chocolate Cake picture" />
+                    </figure>
+                    <p class='cake-description xs-col-5 sm-col-12'>Double Chocolate Cake</p>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <nav class="footer-navigation-bar">
+                <ul class='row'>
+                    <li class="nav-item"><a href="#">SITE MAP</a></li>
+                    <li class="nav-item"><a href="#">CONTACT</a></li>
+                    <li class="nav-item"><a href="#">DELIVERY</a></li>
+                    <!-- <li class="nav-item non-display"><a href="#">XXXXX</a></li>
                 <li class="nav-item non-display"><a href="#">XXXXX</a></li> -->
-            </ul>
-    </footer>
-
+                </ul>
+        </footer>
+    </div>
     <script src='main.js'>
     </script>
 </body>

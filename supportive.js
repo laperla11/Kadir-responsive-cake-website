@@ -11,17 +11,21 @@ iconEl.addEventListener('click', () => {
 
 //changing carousel picture with clicking the thumbnails under the picture
 //access carousel image element
-const carouselImage = document.getElementById('carousel-image');
+var carouselImage = document.getElementById('carousel-image');
 //access the onclick thumbnails area
-const onclickThumbnailBtn = document.querySelector('.carousel-thumbnails-wrapper');
-//access all thumbnails
 const thumbnails = document.querySelectorAll('.thumbnail');
-//adding event listener thumbnail wrapaer
+
+const onclickThumbnailBtn = document.querySelector('.carousel-thumbnails-wrapper');
+//adding event listener
 onclickThumbnailBtn.addEventListener('click', (event) => {
-    clearHighlight();
+    //delete the previous border
+    thumbnails.forEach(thumbnail => {
+        // console.log(thumbnail)
+        thumbnail.style.border = '3px solid white';
+    });
     //assigning carousel picture to the onclicked thumbnail
     carouselImage.src = event.target.src;
-    getHighlighted(event.target);
+    event.target.style.border = '3px solid #FFA69E'
 })
 
 //changing carousel picture with the 'previuos' and 'next' buttons
@@ -36,35 +40,36 @@ carouselButtons.forEach(button => {
 function changeImage(event) {
     clickedButton = event.target.innerText;
     currentCarouselSrc = carouselImage.src;
-    clearHighlight();
     thumbnails.forEach((thumbnail, i) => {
+        thumbnail.style.border = '3px solid white';
         if (currentCarouselSrc === thumbnail.src) {
-            newCarousel = ((clickedButton === '❮') ?
-                getPreviousImage(i) : getNextImage(i)
-            )
+            if (clickedButton === '❮') {
+                changedCarousel = getPreviousImage(i);
+            } else {
+                changedCarousel = getNextImage(i);
+            }
         }
     });
-    carouselImage.src = newCarousel.src;
-    getHighlighted(newCarousel);
+    changedCarousel.style.border = '3px solid #FFA69E';
+    carouselImage.src = changedCarousel.src;
 }
 function getPreviousImage(index) {
-    return (index === 0 ? thumbnails[thumbnails.length - 1] : thumbnails[index - 1]);
+    if (index === 0) {
+        previousImage = thumbnails[thumbnails.length - 1];
+    } else {
+        previousImage = thumbnails[index - 1];
+    }
+    return previousImage;
 }
 
 function getNextImage(index) {
-    return ((index === thumbnails.length - 1) ? thumbnails[0] : thumbnails[index + 1]);
+    if (index === thumbnails.length - 1) {
+        nextImage = thumbnails[0];
+    } else {
+        nextImage = thumbnails[index + 1];
+    }
+    return nextImage;
 }
-//function highlighting clicked thumbnail
-function getHighlighted(element) {
-    element.style.border = '3px solid #FF686B';
-}
-//function clearing the hightllight around thumbnails
-function clearHighlight() {
-    thumbnails.forEach(thumbnail => {
-        thumbnail.style.border = '2px solid white';
-    })
-}
-
 //adding touch events for mobile devices
 carouselImage.addEventListener('touchstart', dragStart);
 carouselImage.addEventListener('touchend', dragEnd);
@@ -75,6 +80,7 @@ var posXInitial;
 function dragStart(e) {
     e.preventDefault();
     posXInitial = e.touches[0].clientX;
+    console.log(posXInitial)
 }
 //monitoring the drag move
 function dragAction(e) {
@@ -83,24 +89,22 @@ function dragAction(e) {
     if (changes < 0) {
         return;
     }
+    console.log(touch, changes)
 }
 //implementing bslide action
 function dragEnd(e) {
     var change = posXInitial - e.changedTouches[0].clientX;
-    var threshold = screen.width / 5;
+    var threshold = screen.width / 4;
     currentCarouselSrc = carouselImage.src;
-    clearHighlight();
     thumbnails.forEach((thumbnail, i) => {
         if (currentCarouselSrc === thumbnail.src) {
             if (change < -threshold) {
-                newCarousel = getPreviousImage(i);
+                getPreviousImage(i);
             } else if (change > threshold) {
-                newCarousel = getNextImage(i);
+                getNextImage(i);
             } else {
                 return;
             }
         }
     });
-    carouselImage.src = newCarousel.src;
-    getHighlighted(newCarousel);
 }
