@@ -18,12 +18,10 @@ const onclickThumbnailBtn = document.querySelector('.carousel-thumbnails-wrapper
 const thumbnails = document.querySelectorAll('.thumbnail');
 //adding event listener thumbnail wrapaer
 onclickThumbnailBtn.addEventListener('click', (event) => {
-    thumbnails.forEach(thumbnail => {
-        thumbnail.style.border = '2px solid white';
-    })
+    clearHighlight();
     //assigning carousel picture to the onclicked thumbnail
     carouselImage.src = event.target.src;
-    event.target.style.border = '3px solid #FF686B';
+    getHighlighted(event.target);
 })
 
 //changing carousel picture with the 'previuos' and 'next' buttons
@@ -38,33 +36,35 @@ carouselButtons.forEach(button => {
 function changeImage(event) {
     clickedButton = event.target.innerText;
     currentCarouselSrc = carouselImage.src;
+    clearHighlight();
     thumbnails.forEach((thumbnail, i) => {
         if (currentCarouselSrc === thumbnail.src) {
-            if (clickedButton === '❮') {
-                getPreviousImage(i);
-            } else {
-                getNextImage(i)
-            }
+            newCarousel = ((clickedButton === '❮') ?
+                getPreviousImage(i) : getNextImage(i)
+            )
         }
     });
+    carouselImage.src = newCarousel.src;
+    getHighlighted(newCarousel);
 }
 function getPreviousImage(index) {
-    if (index === 0) {
-        previousImage = thumbnails[thumbnails.length - 1].src;
-    } else {
-        previousImage = thumbnails[index - 1].src;
-    }
-    return carouselImage.src = previousImage;
+    return (index === 0 ? thumbnails[thumbnails.length - 1] : thumbnails[index - 1]);
 }
 
 function getNextImage(index) {
-    if (index === thumbnails.length - 1) {
-        nextImage = thumbnails[0].src;
-    } else {
-        nextImage = thumbnails[index + 1].src;
-    }
-    return carouselImage.src = nextImage;
+    return ((index === thumbnails.length - 1) ? thumbnails[0] : thumbnails[index + 1]);
 }
+//function highlighting clicked thumbnail
+function getHighlighted(element) {
+    element.style.border = '3px solid #FF686B';
+}
+//function clearing the hightllight around thumbnails
+function clearHighlight() {
+    thumbnails.forEach(thumbnail => {
+        thumbnail.style.border = '2px solid white';
+    })
+}
+
 //adding touch events for mobile devices
 carouselImage.addEventListener('touchstart', dragStart);
 carouselImage.addEventListener('touchend', dragEnd);
@@ -87,17 +87,20 @@ function dragAction(e) {
 //implementing bslide action
 function dragEnd(e) {
     var change = posXInitial - e.changedTouches[0].clientX;
-    var threshold = screen.width / 4;
+    var threshold = screen.width / 5;
     currentCarouselSrc = carouselImage.src;
+    clearHighlight();
     thumbnails.forEach((thumbnail, i) => {
         if (currentCarouselSrc === thumbnail.src) {
             if (change < -threshold) {
-                getPreviousImage(i);
+                newCarousel = getPreviousImage(i);
             } else if (change > threshold) {
-                getNextImage(i);
+                newCarousel = getNextImage(i);
             } else {
                 return;
             }
         }
     });
+    carouselImage.src = newCarousel.src;
+    getHighlighted(newCarousel);
 }
